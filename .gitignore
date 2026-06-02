@@ -1,0 +1,15 @@
+node_modules/
+nodemodules/
+.env
+*.log
+tmp/
+temp/
+modules/commands/cache/tmp/
+modules/commands/cache/img/
+modules/commands/cache/image/
+modules/commands/cache/audio/
+modules/commands/cache/video/
+.cache/
+.upm/
+.local/
+*.zip

@@ -1,0 +1,74 @@
+const fs = require('fs-extra');
+const path = require('path');
+
+function sendGif(api, gifPath, threadID, label) {
+    if (!fs.existsSync(gifPath)) {
+        console.error(`[GIF-${label}] ملف غير موجود: ${gifPath}`);
+        return;
+    }
+    const stat = fs.statSync(gifPath);
+    console.log(`[GIF-${label}] إرسال: ${path.basename(gifPath)} | ${(stat.size/1024).toFixed(0)}KB`);
+    setTimeout(() => {
+        try {
+            const stream = fs.createReadStream(gifPath);
+            api.sendMessage({ attachment: stream }, threadID, (err, info) => {
+                if (err) console.error(`[GIF-${label}] خطأ:`, JSON.stringify(err).slice(0,300));
+                else console.log(`[GIF-${label}] ✓ أُرسل | ID: ${info && info.messageID}`);
+            });
+        } catch (e) {
+            console.error(`[GIF-${label}] استثناء:`, e.message);
+        }
+    }, 800);
+}
+
+module.exports.config = {
+    name: "leaveNoti",
+    eventType: ["log:unsubscribe"],
+    version: "2.0.0",
+    credits: "Hitler System",
+    description: "إشعار مغادرة الأعضاء"
+};
+
+module.exports.run = async function ({ api, event, Users }) {
+    const botID = api.getCurrentUserID();
+    if (event.logMessageData.leftParticipantFbId == botID) return;
+
+    const adminOnlyThreads = (global.moduleData && global.moduleData.adminOnlyThreads) || {};
+    if (adminOnlyThreads[event.threadID]) return;
+
+    const threadID = event.threadID;
+    const iduser = event.logMessageData.leftParticipantFbId;
+    const name = global.data.userName.get(iduser) || await Users.getNameUser(iduser) || 'مجهول';
+
+    const moment = require('moment-timezone');
+    const timeNow = moment.tz('Asia/Riyadh').format('HH:mm:ss ─ DD/MM/YYYY');
+
+    const GIF_LEAVE = path.join(process.cwd(), 'assets', 'gifs', 'leave.gif');
+
+    const leaveMsg =
+`╔═══════ ⚠️ ═══════╗
+      🚪 مغادرة مفاجئة
+╚═══════ ⚠️ ═══════╝
+
+🏃‍♂️ الهارب من الكروب:
+【 ${name} 】
+توقيت الهروب
+[ ${timeNow} ]
+💨 قرر ينسحب بهدوء ويختفي في الظلام…
+تسجيل هروب يجدعان صوروا👿
+━━━━━━━━━━━━━━━━━━━
+
+😢 الكرسي بقى فاضي  
+🕯️  ووفرت مكان.لغيرك🤣   
+
+ لو حاب ترجعه  انسي يخنزير👀
+
+━━━━━━━━━━━━━━━━━━━
+👋 مع السلامة يا خول`;
+
+    await api.sendMessage(leaveMsg, threadID);
+
+    if (fs.existsSync(GIF_LEAVE)) {
+        setTimeout(() => sendGif(api, GIF_LEAVE, threadID, 'leave'), 600);
+    }
+};

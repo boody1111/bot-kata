@@ -1,0 +1,103 @@
+# ملف اللغة العربية - Arabic Language File
+# إذا أردت النزول لسطر جديد، استخدم \n. مثال: نص\nنص
+# بعد التعديل، يجب إعادة تشغيل البوت لتطبيق التغييرات.
+
+# mirai.js
+
+mirai.errorFormat=الوحدة بتنسيق خاطئ!
+mirai.nameExist=اسم الوحدة مكرر مع وحدة أخرى، يرجى التحقق منه
+mirai.notFoundLanguage=الوحدة %1 لا تدعم لغتك
+mirai.notFoundPackage=لم يتم العثور على حزمة %1 لدعم الوحدة %2
+mirai.cantInstallPackage=تعذّر تثبيت الحزمة %1 للوحدة %2، الخطأ: %3
+mirai.loadedPackage=تم تحميل كل الحزم للوحدة %1 بنجاح
+mirai.loadedConfig=تم تحميل الإعدادات للوحدة %1 بنجاح
+mirai.cantLoadConfig=تعذّر تحميل إعدادات الوحدة %1، الخطأ: %2
+mirai.cantOnload=تعذّر تشغيل الإعداد الأولي للوحدة %1، الخطأ: %1
+mirai.successLoadModule=تم تحميل الوحدة %1 بنجاح
+mirai.failLoadModule=تعذّر تحميل الوحدة %1، الخطأ: %2
+mirai.finishLoadModule=تم تحميل %1 وحدة أوامر و %2 وحدة أحداث بنجاح
+mirai.foundPathAppstate=تم العثور على ملف الجلسة
+mirai.notFoundPathAppstate=لم يتم العثور على ملف الجلسة، يرجى التحقق منه
+mirai.checkListGban=جاري فحص قائمة الحظر العالمي...
+mirai.banDevice=جهازك محظور من البوت، تواصل مع المطور
+mirai.keyNotSameFormat=البيانات المُدخلة يجب أن تكون 6 أرقام فقط!
+mirai.codeInputExpired=الرمز الذي أدخلته غير صحيح أو منتهي الصلاحية!
+mirai.unbanDeviceSuccess=تم رفع الحظر عن حسابك، أعد تشغيل البوت للاستمرار!
+mirai.userBanned=أنت محظور. للمزيد من التفاصيل تواصل مع المطور!
+mirai.finishCheckListGban=تم فحص قائمة الحظر بنجاح
+mirai.handleListenError=حدث خطأ غير متوقع في المستمع، الخطأ: %1
+mirai.warningSourceCode=\nتم تحديث البوت بنجاح!!!
+mirai.refreshListen=تم تحديث المستمع...
+mirai.successConnectDatabase=تم الاتصال بقاعدة البيانات بنجاح!!
+mirai.failConnectDatabase=فشل الاتصال بقاعدة البيانات، الخطأ: %1. يرجى التحقق من الإعدادات!!
+
+# includes/listen.js
+
+listen.startLoadEnvironment=جاري تهيئة بيئة البوت!
+listen.loadedEnvironmentThread=تم تهيئة بيانات المجموعات بنجاح!!!
+listen.loadedEnvironmentUser=تم تهيئة بيانات المستخدمين بنجاح!!!
+listen.successLoadEnvironment=تم تهيئة بيئة البوت بنجاح!!!
+listen.failLoadEnvironment=فشل تهيئة بيئة البوت، الخطأ: %1
+
+# includes/controller/currencies.js
+
+currencies.needObjectOrArray=يجب أن يكون Array أو Object أو كليهما
+currencies.needObject=يجب أن يكون Object
+currencies.needNumber=يجب أن يكون رقماً
+
+# includes/controller/threads.js
+
+threads.needObjectOrArray=يجب أن يكون Array أو Object أو كليهما
+threads.needObject=يجب أن يكون Object
+
+# includes/controller/users.js
+
+users.needObjectOrArray=يجب أن يكون Array أو Object أو كليهما
+users.needObject=يجب أن يكون Object
+
+# includes/handle/handleCommand.js
+
+handleCommand.userBanned=أنت محظور من استخدام البوت حالياً
+handleCommand.threadBanned=مجموعتك محظورة من استخدام البوت حالياً
+handleCommand.commandNotExist= الأمر خاطئ! هل تقصد [ %1 ]؟
+handleCommand.commandThreadBanned=مجموعتك محظورة من استخدام هذا الأمر
+handleCommand.commandUserBanned=أنت محظور من استخدام هذا الأمر
+handleCommand.threadNotAllowNSFW=مجموعتك غير مسموح لها باستخدام الأوامر ذات محتوى 18+
+handleCommand.cantGetInfoThread=تعذّر جلب معلومات المجموعة، الخطأ: %1
+handleCommand.permssionNotEnough= عذراً، أنت عضو عادي ولا يمكنك استخدام الأمر "%1". فقط المشرفون والأدمن يستطيعون استخدامه!!!
+handleCommand.cantSetMessageReaction=حدث خطأ غير متوقع في تعيين رد الفعل، الخطأ: %1
+handleCommand.notFoundLanguage=لم يتم العثور على لغة للوحدة %1
+handleCommand.executeCommand=» %1 « الأمر: %2 من: %3 في المجموعة: %4 | المعطيات: %5 | وقت المعالجة: %6ms
+handleCommand.commandError=حدث خطأ غير متوقع أثناء تنفيذ الأمر %1، الخطأ: %2
+
+# includes/handle/handleCommandEvent.js
+
+handleCommandEvent.moduleError=حدث خطأ غير متوقع في الأمر %1، الخطأ: %2
+
+# includes/handle/handleCreateDatabase.js
+
+handleCreateDatabase.newThread=معرف المجموعة » %1
+handleCreateDatabase.newUser=معرف المستخدم » %1
+
+# includes/handle/handleEvent.js
+
+handleEvent.executeEvent=» %1 « الحدث المُنفَّذ: %2 في المجموعة: %3 | وقت المعالجة: %4ms
+handleEvent.eventError=حدث خطأ غير متوقع أثناء تنفيذ الحدث %1، الخطأ: %12
+
+# includes/handle/handleReaction.js
+
+handleReaction.missingValue=بيانات ناقصة لتنفيذ الرد
+handleReaction.executeError=حدث خطأ غير متوقع أثناء تنفيذ الرد، الخطأ: %1
+
+# includes/handle/handleReply.js
+
+handleReply.missingValue=بيانات ناقصة لتنفيذ الرد
+handleReply.executeError=حدث خطأ غير متوقع أثناء تنفيذ الرد، الخطأ: %1
+
+# includes/handle/handleSchedule.js
+
+handleSchedule.exectuteError=حدث خطأ غير متوقع في المجدول للوحدة %1، الخطأ: %2
+
+# utils/index.js
+
+utils.throwError= » استخدام خاطئ للأمر، يرجى استخدام %1help %2 لمعرفة طريقة الاستخدام!
